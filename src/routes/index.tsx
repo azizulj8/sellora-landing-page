@@ -43,6 +43,21 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "QueueIt",
+          description:
+            "QueueIt membantu UMKM menerima pesanan, mengatur antrean, dan memberi notifikasi otomatis lewat WhatsApp.",
+          applicationCategory: "BusinessApplication",
+          operatingSystem: "Web, WhatsApp",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "IDR" },
+        }),
+      },
+    ],
   }),
   component: LandingPage,
 });
