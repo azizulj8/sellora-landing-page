@@ -6,7 +6,7 @@ export function WhatsAppMockup() {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.6, ease: "easeOut" as const }}
       className="relative mx-auto w-full max-w-[340px]"
     >
       <div className="rounded-[2.2rem] border border-white/10 bg-deep p-2 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)]">
