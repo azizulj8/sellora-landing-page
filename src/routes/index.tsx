@@ -43,6 +43,21 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "QueueIt",
+          description:
+            "QueueIt membantu UMKM menerima pesanan, mengatur antrean, dan memberi notifikasi otomatis lewat WhatsApp.",
+          applicationCategory: "BusinessApplication",
+          operatingSystem: "Web, WhatsApp",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "IDR" },
+        }),
+      },
+    ],
   }),
   component: LandingPage,
 });
@@ -122,8 +137,8 @@ function LandingPage() {
                   🚀 Mulai Gratis <ArrowRight className="h-5 w-5" />
                 </Button>
               </a>
-              <a href="#demo">
-                <Button variant="outline" size="xl" className="rounded-full">
+              <a href="#demo" aria-label="Lihat demo QueueIt">
+                <Button variant="outline" size="xl" className="rounded-full" aria-label="Lihat demo QueueIt">
                   <Play className="h-4 w-4" /> Lihat Demo
                 </Button>
               </a>
