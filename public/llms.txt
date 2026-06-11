@@ -1,0 +1,9 @@
+# QueueIt
+
+> QueueIt helps Indonesian MSMEs (UMKM) automate WhatsApp-based order queues — no app installation needed, setup in 5 minutes.
+
+QueueIt is a SaaS platform designed for small and medium businesses in Indonesia that handle high-volume walk-in or pre-order traffic. It turns chaotic WhatsApp chats into structured, automated order flows with queue numbers, real-time status updates, and revenue dashboards.
+
+## Pages
+
+- [Home](/): Product overview, features, pricing, and signup for QueueIt.
