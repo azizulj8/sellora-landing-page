@@ -1,21 +1,5 @@
-import { useEffect, useRef } from "react";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-
-// Fix default marker icons (Leaflet + bundlers)
-import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
-
-const DefaultIcon = L.icon({
-  iconRetinaUrl: markerIcon2x,
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
+import { useEffect, useRef, useState } from "react";
+import type { Map as LeafletMap, Marker as LeafletMarker, LeafletMouseEvent } from "leaflet";
 
 export type LatLng = { lat: number; lng: number };
 
@@ -26,47 +10,70 @@ interface Props {
 
 export function LocationPicker({ value, onChange }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const mapRef = useRef<L.Map | null>(null);
-  const markerRef = useRef<L.Marker | null>(null);
+  const mapRef = useRef<LeafletMap | null>(null);
+  const markerRef = useRef<LeafletMarker | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    if (!containerRef.current || mapRef.current) return;
+    if (!mounted || !containerRef.current || mapRef.current) return;
+    let cancelled = false;
 
-    const initial: LatLng = value ?? { lat: -6.2, lng: 106.816666 }; // Jakarta default
+    (async () => {
+      const L = (await import("leaflet")).default;
+      await import("leaflet/dist/leaflet.css");
+      const [icon2x, icon, shadow] = await Promise.all([
+        import("leaflet/dist/images/marker-icon-2x.png"),
+        import("leaflet/dist/images/marker-icon.png"),
+        import("leaflet/dist/images/marker-shadow.png"),
+      ]);
+      if (cancelled || !containerRef.current) return;
 
-    const map = L.map(containerRef.current).setView([initial.lat, initial.lng], 13);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "© OpenStreetMap",
-      maxZoom: 19,
-    }).addTo(map);
+      const DefaultIcon = L.icon({
+        iconRetinaUrl: (icon2x as any).default ?? (icon2x as any),
+        iconUrl: (icon as any).default ?? (icon as any),
+        shadowUrl: (shadow as any).default ?? (shadow as any),
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
+      });
 
-    const marker = L.marker([initial.lat, initial.lng], {
-      icon: DefaultIcon,
-      draggable: true,
-    }).addTo(map);
+      const initial: LatLng = value ?? { lat: -6.2, lng: 106.816666 };
+      const map = L.map(containerRef.current).setView([initial.lat, initial.lng], 13);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap",
+        maxZoom: 19,
+      }).addTo(map);
 
-    marker.on("dragend", () => {
-      const { lat, lng } = marker.getLatLng();
-      onChange({ lat, lng });
-    });
+      const marker = L.marker([initial.lat, initial.lng], {
+        icon: DefaultIcon,
+        draggable: true,
+      }).addTo(map);
 
-    map.on("click", (e: L.LeafletMouseEvent) => {
-      marker.setLatLng(e.latlng);
-      onChange({ lat: e.latlng.lat, lng: e.latlng.lng });
-    });
+      marker.on("dragend", () => {
+        const { lat, lng } = marker.getLatLng();
+        onChange({ lat, lng });
+      });
+      map.on("click", (e: LeafletMouseEvent) => {
+        marker.setLatLng(e.latlng);
+        onChange({ lat: e.latlng.lat, lng: e.latlng.lng });
+      });
 
-    mapRef.current = map;
-    markerRef.current = marker;
+      mapRef.current = map;
+      markerRef.current = marker;
+    })();
 
     return () => {
-      map.remove();
+      cancelled = true;
+      mapRef.current?.remove();
       mapRef.current = null;
       markerRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [mounted]);
 
-  // Sync external value (e.g. geolocate button) to map
   useEffect(() => {
     if (!value || !mapRef.current || !markerRef.current) return;
     markerRef.current.setLatLng([value.lat, value.lng]);
@@ -74,7 +81,7 @@ export function LocationPicker({ value, onChange }: Props) {
   }, [value?.lat, value?.lng]);
 
   const useMyLocation = () => {
-    if (!navigator.geolocation) return;
+    if (typeof navigator === "undefined" || !navigator.geolocation) return;
     navigator.geolocation.getCurrentPosition(
       (pos) => onChange({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
       () => {},
@@ -86,7 +93,7 @@ export function LocationPicker({ value, onChange }: Props) {
     <div className="space-y-2">
       <div
         ref={containerRef}
-        className="h-72 w-full rounded-lg border border-border overflow-hidden z-0"
+        className="h-72 w-full rounded-lg border border-border overflow-hidden z-0 bg-muted"
       />
       <div className="flex items-center justify-between text-xs text-muted-foreground">
         <span>

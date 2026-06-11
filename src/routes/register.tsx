@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 import { ArrowLeft, CheckCircle2, MapPin, Phone, Store, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -38,9 +38,39 @@ function RegisterPage() {
   const [store, setStore] = useState("");
   const [wa, setWa] = useState("");
   const [location, setLocation] = useState<LatLng | null>(null);
+  const [address, setAddress] = useState<string>("");
+  const [addressLoading, setAddressLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  // Reverse geocode whenever the pin changes (debounced)
+  useEffect(() => {
+    if (!location) {
+      setAddress("");
+      return;
+    }
+    const ctrl = new AbortController();
+    const t = setTimeout(async () => {
+      setAddressLoading(true);
+      try {
+        const res = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${location.lat}&lon=${location.lng}&accept-language=id`,
+          { signal: ctrl.signal, headers: { Accept: "application/json" } },
+        );
+        const data = await res.json();
+        setAddress(data?.display_name ?? "");
+      } catch (err) {
+        if ((err as any)?.name !== "AbortError") setAddress("");
+      } finally {
+        setAddressLoading(false);
+      }
+    }, 500);
+    return () => {
+      ctrl.abort();
+      clearTimeout(t);
+    };
+  }, [location?.lat, location?.lng]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -77,6 +107,19 @@ function RegisterPage() {
             Tim kami akan menghubungi <strong>{name}</strong> via WhatsApp dalam 1×24 jam untuk
             aktivasi toko <strong>{store}</strong>.
           </p>
+          {(address || location) && (
+            <div className="mt-5 text-left bg-muted/50 border border-border rounded-lg p-4">
+              <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                <MapPin className="h-3.5 w-3.5" /> Lokasi Toko
+              </div>
+              {address && <p className="mt-1.5 text-sm">{address}</p>}
+              {location && (
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {location.lat.toFixed(5)}, {location.lng.toFixed(5)}
+                </p>
+              )}
+            </div>
+          )}
           <Link to="/" className="inline-block mt-6">
             <Button variant="outline" className="rounded-full">
               <ArrowLeft className="h-4 w-4" /> Kembali ke beranda
@@ -155,6 +198,11 @@ function RegisterPage() {
                 <MapPin className="h-4 w-4" /> Lokasi Toko
               </Label>
               <LocationPicker value={location} onChange={setLocation} />
+              {(address || addressLoading) && (
+                <p className="text-xs text-muted-foreground">
+                  {addressLoading ? "Mencari alamat..." : `📍 ${address}`}
+                </p>
+              )}
               {errors.location && <p className="text-xs text-destructive">{errors.location}</p>}
             </div>
 
