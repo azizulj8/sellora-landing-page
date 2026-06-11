@@ -77,20 +77,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "QueueIt — Antrean WhatsApp Otomatis untuk UMKM" },
+      {
+        name: "description",
+        content:
+          "QueueIt membantu UMKM menerima pesanan, mengatur antrean, dan memberi notifikasi otomatis langsung lewat WhatsApp. Tanpa install app. Setup 5 menit.",
+      },
+      { name: "author", content: "QueueIt" },
+      { property: "og:title", content: "QueueIt — Antrean WhatsApp Otomatis untuk UMKM" },
+      {
+        property: "og:description",
+        content:
+          "Pesanan ramai tidak lagi berarti antrean berantakan. Kelola pesanan & antrean lewat WhatsApp.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "QueueIt — Antrean WhatsApp Otomatis untuk UMKM" },
+      {
+        name: "twitter:description",
+        content: "Kelola pesanan & antrean lewat WhatsApp. Setup 5 menit.",
+      },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap",
       },
+      { rel: "stylesheet", href: appCss },
     ],
   }),
   shellComponent: RootShell,
