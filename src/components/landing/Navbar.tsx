@@ -53,7 +53,7 @@ export function Navbar() {
           </ul>
 
           <div className="hidden md:flex items-center gap-2">
-            <a href="#cta">
+            <a href="/register">
               <Button variant="default" size="default" className="rounded-full px-5">
                 Mulai Gratis
               </Button>
@@ -90,7 +90,7 @@ export function Navbar() {
 
       {/* Mobile sticky CTA */}
       <div className="md:hidden fixed bottom-0 inset-x-0 z-40 p-3 bg-gradient-to-t from-background via-background/95 to-transparent">
-        <a href="#cta">
+        <a href="/register">
           <Button variant="hero" size="lg" className="w-full rounded-full">
             🚀 Mulai Gratis
           </Button>
