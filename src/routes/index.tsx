@@ -122,8 +122,8 @@ function LandingPage() {
                   🚀 Mulai Gratis <ArrowRight className="h-5 w-5" />
                 </Button>
               </a>
-              <a href="#demo">
-                <Button variant="outline" size="xl" className="rounded-full">
+              <a href="#demo" aria-label="Lihat demo QueueIt">
+                <Button variant="outline" size="xl" className="rounded-full" aria-label="Lihat demo QueueIt">
                   <Play className="h-4 w-4" /> Lihat Demo
                 </Button>
               </a>
