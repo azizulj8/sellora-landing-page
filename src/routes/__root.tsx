@@ -97,6 +97,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         name: "twitter:description",
         content: "Kelola pesanan & antrean lewat WhatsApp. Setup 5 menit.",
       },
+      { name: "description", content: "QueueIt is an AI-powered WhatsApp system for UMKM to manage customer orders and queues." },
+      { property: "og:description", content: "QueueIt is an AI-powered WhatsApp system for UMKM to manage customer orders and queues." },
+      { name: "twitter:description", content: "QueueIt is an AI-powered WhatsApp system for UMKM to manage customer orders and queues." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9402ff39-0db6-42f4-bf22-41ea055dbd7c/id-preview-c4bf0d61--7dd7f83b-81c9-4063-a58f-a2a78ac4f1c6.lovable.app-1781247381427.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9402ff39-0db6-42f4-bf22-41ea055dbd7c/id-preview-c4bf0d61--7dd7f83b-81c9-4063-a58f-a2a78ac4f1c6.lovable.app-1781247381427.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
