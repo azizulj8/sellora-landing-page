@@ -31,15 +31,32 @@ export const Route = createFileRoute("/register")({
   component: RegisterPage,
 });
 
+function normalizeWa(raw: string): string | null {
+  const digits = raw.replace(/\D/g, "");
+  if (digits.length < 9) return null;
+  if (digits.startsWith("0")) return "62" + digits.slice(1);
+  if (digits.startsWith("62")) return digits;
+  if (digits.startsWith("8")) return "62" + digits;
+  return digits;
+}
+
+function waLink(raw: string): string | null {
+  const n = normalizeWa(raw);
+  return n ? `https://wa.me/${n}` : null;
+}
+
 const schema = z.object({
   name: z.string().trim().min(2, "Nama minimal 2 karakter").max(80),
   store: z.string().trim().min(2, "Nama toko minimal 2 karakter").max(80),
   wa: z
     .string()
     .trim()
-    .min(8, "Nomor WhatsApp tidak valid")
-    .max(20)
-    .regex(/^[0-9+\-\s]+$/, "Hanya angka, +, -, dan spasi"),
+    .min(9, "Nomor WhatsApp terlalu pendek")
+    .max(18, "Nomor WhatsApp terlalu panjang")
+    .regex(/^[0-9+\-\s()]+$/, "Hanya angka, +, -, spasi, dan tanda kurung")
+    .refine((v) => normalizeWa(v) !== null, {
+      message: "Format nomor tidak valid. Contoh: 081234567890",
+    }),
 });
 
 function RegisterPage() {
