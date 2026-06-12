@@ -212,11 +212,37 @@ function RegisterPage() {
                 type="tel"
                 value={wa}
                 onChange={(e) => setWa(e.target.value)}
-                placeholder="08xxxxxxxxxx"
-                maxLength={20}
+                placeholder="081234567890"
+                maxLength={18}
                 required
               />
               {errors.wa && <p className="text-xs text-destructive">{errors.wa}</p>}
+
+              {waLink(wa) && (
+                <div className="mt-2 rounded-lg border border-primary/20 bg-primary/5 p-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="text-xs font-medium text-primary flex items-center gap-1.5">
+                        <MessageCircle className="h-3 w-3" /> Pratinjau Link WhatsApp
+                      </p>
+                      <p className="mt-1 text-sm truncate" title={waLink(wa) as string}>
+                        {waLink(wa)}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-0.5">
+                        Pelanggan akan chat ke nomor ini
+                      </p>
+                    </div>
+                    <a
+                      href={waLink(wa) as string}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="shrink-0 inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
+                    >
+                      Coba <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="space-y-2">
