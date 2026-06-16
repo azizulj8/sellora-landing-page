@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "QueueIt — Antrean WhatsApp Otomatis untuk UMKM" },
+      { title: "Sellora-AI — Antrean WhatsApp Otomatis untuk UMKM" },
       {
         name: "description",
         content:
-          "QueueIt membantu UMKM menerima pesanan, mengatur antrean, dan memberi notifikasi otomatis langsung lewat WhatsApp. Tanpa install app. Setup 5 menit.",
+          "Sellora-AI membantu UMKM menerima pesanan, mengatur antrean, dan memberi notifikasi otomatis langsung lewat WhatsApp. Tanpa install app. Setup 5 menit.",
       },
-      { name: "author", content: "QueueIt" },
-      { property: "og:title", content: "QueueIt — Antrean WhatsApp Otomatis untuk UMKM" },
+      { name: "author", content: "Sellora-AI" },
+      { property: "og:title", content: "Sellora-AI — Antrean WhatsApp Otomatis untuk UMKM" },
       {
         property: "og:description",
         content:
@@ -92,14 +92,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "QueueIt — Antrean WhatsApp Otomatis untuk UMKM" },
+      { name: "twitter:title", content: "Sellora-AI — Antrean WhatsApp Otomatis untuk UMKM" },
       {
         name: "twitter:description",
         content: "Kelola pesanan & antrean lewat WhatsApp. Setup 5 menit.",
       },
-      { name: "description", content: "QueueIt is an AI-powered WhatsApp system for UMKM to manage customer orders and queues." },
-      { property: "og:description", content: "QueueIt is an AI-powered WhatsApp system for UMKM to manage customer orders and queues." },
-      { name: "twitter:description", content: "QueueIt is an AI-powered WhatsApp system for UMKM to manage customer orders and queues." },
+      { name: "description", content: "Sellora-AI is an AI-powered WhatsApp system for UMKM to manage customer orders and queues." },
+      { property: "og:description", content: "Sellora-AI is an AI-powered WhatsApp system for UMKM to manage customer orders and queues." },
+      { name: "twitter:description", content: "Sellora-AI is an AI-powered WhatsApp system for UMKM to manage customer orders and queues." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9402ff39-0db6-42f4-bf22-41ea055dbd7c/id-preview-c4bf0d61--7dd7f83b-81c9-4063-a58f-a2a78ac4f1c6.lovable.app-1781247381427.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9402ff39-0db6-42f4-bf22-41ea055dbd7c/id-preview-c4bf0d61--7dd7f83b-81c9-4063-a58f-a2a78ac4f1c6.lovable.app-1781247381427.png" },
     ],
@@ -118,7 +118,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "QueueIt",
+          name: "Sellora-AI",
           url: "/",
         }),
       },
@@ -127,7 +127,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "QueueIt",
+          name: "Sellora-AI",
           url: "/",
         }),
       },

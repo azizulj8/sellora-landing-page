@@ -28,30 +28,26 @@ import { DashboardMockup } from "@/components/landing/DashboardMockup";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "QueueIt — Antrean WhatsApp Otomatis untuk UMKM" },
-      {
-        name: "description",
-        content:
-          "QueueIt membantu UMKM menerima pesanan, mengatur antrean, dan memberi notifikasi otomatis lewat WhatsApp. Tanpa install app. Setup 5 menit.",
-      },
-      { property: "og:title", content: "QueueIt — Antrean WhatsApp Otomatis untuk UMKM" },
+      { title: "Sellora-AI — Antrean WhatsApp Otomatis untuk UMKM" },
+      { name: "description", content: "Sellora-AI membantu UMKM menerima pesanan, mengatur antrean, dan memberi notifikasi otomatis lewat WhatsApp. Tanpa install app. Setup 5 menit." },
+      { property: "og:title", content: "Sellora-AI — Antrean WhatsApp Otomatis untuk UMKM" },
       {
         property: "og:description",
         content:
           "Pesanan ramai tidak lagi berarti antrean berantakan. AI order assistant + smart queue lewat WhatsApp.",
       },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "/" }, // This should probably be the full URL, not just "/"
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "/" }], // This should probably be the full URL, not just "/"
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
-          name: "QueueIt",
+          name: "Sellora-AI",
           description:
-            "QueueIt membantu UMKM menerima pesanan, mengatur antrean, dan memberi notifikasi otomatis lewat WhatsApp.",
+            "Sellora-AI membantu UMKM menerima pesanan, mengatur antrean, dan memberi notifikasi otomatis lewat WhatsApp.",
           applicationCategory: "BusinessApplication",
           operatingSystem: "Web, WhatsApp",
           offers: { "@type": "Offer", price: "0", priceCurrency: "IDR" },
@@ -108,7 +104,7 @@ function LandingPage() {
             <h1 className="mt-5 text-[40px] leading-[1.05] sm:text-6xl lg:text-[72px] font-extrabold tracking-tight text-balance">
               Pesanan ramai tidak lagi berarti{" "}
               <span className="relative inline-block text-primary">
-                antrean berantakan
+                antrean berantakan 
                 <svg
                   className="absolute -bottom-2 left-0 w-full"
                   viewBox="0 0 200 8"
@@ -127,18 +123,18 @@ function LandingPage() {
               .
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-ink-soft max-w-xl text-pretty">
-              QueueIt membantu UMKM menerima pesanan, mengatur antrean, dan memberi notifikasi
+              Sellora-AI membantu UMKM menerima pesanan, mengatur antrean, dan memberi notifikasi
               otomatis langsung lewat WhatsApp.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="/register">
                 <Button variant="hero" size="xl" className="rounded-full">
-                  🚀 Mulai Gratis <ArrowRight className="h-5 w-5" />
+                  🚀 Mulai Gratis <ArrowRight className="h-5 w-5" /> 
                 </Button>
               </a>
-              <a href="#demo" aria-label="Lihat demo QueueIt">
-                <Button variant="outline" size="xl" className="rounded-full" aria-label="Lihat demo QueueIt">
+              <a href="#demo" aria-label="Lihat demo Sellora-AI">
+                <Button variant="outline" size="xl" className="rounded-full" aria-label="Lihat demo Sellora-AI">
                   <Play className="h-4 w-4" /> Lihat Demo
                 </Button>
               </a>
@@ -285,7 +281,7 @@ function LandingPage() {
             </ol>
           </motion.div>
 
-          {/* QueueIt */}
+          {/* Sellora-AI */}
           <motion.div
             {...fadeUp}
             className="rounded-3xl border-2 border-primary/30 bg-gradient-to-br from-primary/5 via-card to-card p-7 shadow-[var(--shadow-glow)]"
@@ -294,7 +290,7 @@ function LandingPage() {
               <span className="grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground">
                 <Check className="h-4 w-4" strokeWidth={3} />
               </span>
-              <h3 className="text-xl font-bold">QueueIt Process</h3>
+              <h3 className="text-xl font-bold">Sellora-AI Process</h3>
             </div>
             <ol className="mt-6 space-y-3">
               {["Customer scan QR → WhatsApp", "AI memahami pesanan", "Smart queue otomatis", "Notifikasi siap diambil"].map(
@@ -375,7 +371,7 @@ function LandingPage() {
         <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto">
           <EyebrowChip>Demo Interaktif</EyebrowChip>
           <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-balance">
-            Lihat QueueIt bekerja dalam 30 detik.
+            Lihat Sellora-AI bekerja dalam 30 detik.
           </h2>
           <p className="mt-4 text-lg text-ink-soft">
             Dari customer scan QR sampai notifikasi pesanan siap diambil.
@@ -576,7 +572,7 @@ function LandingPage() {
               Jangan kehilangan pelanggan karena antrean.
             </h2>
             <p className="mt-5 text-lg text-white/70 text-pretty">
-              Mulai gunakan QueueIt hari ini dan rasakan bedanya di jam sibuk pertama.
+              Mulai gunakan Sellora-AI hari ini dan rasakan bedanya di jam sibuk pertama.
             </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-3">
@@ -603,8 +599,8 @@ function LandingPage() {
             <div className="flex items-center gap-2 font-extrabold">
               <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-foreground">
                 <MessageCircle className="h-4 w-4" strokeWidth={2.5} />
-              </span>
-              QueueIt
+              </span> 
+              Sellora-AI
             </div>
             <p className="mt-3 text-sm text-ink-soft max-w-xs">
               AI WhatsApp Queue Management untuk UMKM Indonesia.
@@ -631,7 +627,7 @@ function LandingPage() {
         </div>
         <div className="border-t border-border">
           <div className="mx-auto max-w-7xl px-5 sm:px-8 py-6 text-xs text-ink-soft flex flex-wrap justify-between gap-2">
-            <p>© {new Date().getFullYear()} QueueIt. Dibuat untuk UMKM Indonesia.</p>
+            <p>© {new Date().getFullYear()} Sellora-AI. Dibuat untuk UMKM Indonesia.</p>
             <p>Made with WhatsApp 💚</p>
           </div>
         </div>

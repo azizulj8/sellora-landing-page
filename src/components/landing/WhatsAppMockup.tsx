@@ -15,7 +15,7 @@ export function WhatsAppMockup() {
           <div className="bg-primary text-primary-foreground px-4 py-3 flex items-center gap-3">
             <div className="grid h-9 w-9 place-items-center rounded-full bg-white/20 text-white font-bold">Q</div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold truncate">QueueIt — Ayam Bakar Pak Slamet</p>
+              <p className="text-sm font-semibold truncate">Sellora-AI — Ayam Bakar Pak Slamet</p>
               <p className="text-[11px] opacity-80">online · AI assistant</p>
             </div>
           </div>

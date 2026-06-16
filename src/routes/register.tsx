@@ -20,11 +20,11 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
-      { title: "Daftar Gratis – QueueIt" },
+      { title: "Daftar Gratis – Sellora-AI" },
       {
         name: "description",
         content:
-          "Daftar gratis QueueIt dan mulai kelola antrean pesanan WhatsApp untuk toko kamu dalam 5 menit.",
+          "Daftar gratis Sellora-AI dan mulai kelola antrean pesanan WhatsApp untuk toko kamu dalam 5 menit.",
       },
     ],
   }),
@@ -167,7 +167,7 @@ function RegisterPage() {
         </Link>
 
         <div className="mt-6 bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-sm">
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Daftar Gratis QueueIt</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Daftar Gratis Sellora-AI</h1>
           <p className="mt-2 text-muted-foreground">
             Isi data toko kamu. Aktivasi gratis, tanpa kartu kredit.
           </p>
@@ -269,7 +269,7 @@ function RegisterPage() {
             </Button>
 
             <p className="text-xs text-center text-muted-foreground">
-              Dengan mendaftar, kamu setuju dengan syarat & ketentuan QueueIt.
+              Dengan mendaftar, kamu setuju dengan syarat & ketentuan Sellora-AI.
             </p>
           </form>
         </div>
