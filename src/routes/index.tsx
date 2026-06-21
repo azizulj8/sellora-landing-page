@@ -128,7 +128,7 @@ function LandingPage() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="/register">
+              <a href="/auth">
                 <Button variant="hero" size="xl" className="rounded-full">
                   🚀 Mulai Gratis <ArrowRight className="h-5 w-5" /> 
                 </Button>
@@ -576,7 +576,7 @@ function LandingPage() {
             </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <a href="/register">
+              <a href="/auth">
                 <Button variant="hero" size="xl" className="rounded-full">
                   🚀 Mulai Gratis Sekarang <ArrowRight className="h-5 w-5" />
                 </Button>
