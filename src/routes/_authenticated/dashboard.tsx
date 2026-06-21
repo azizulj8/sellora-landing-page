@@ -16,16 +16,24 @@ function DashboardPage() {
   const { data: stats } = useQuery({
     queryKey: ["dashboard-stats", user.id],
     queryFn: async () => {
-      const [stores, products, sub] = await Promise.all([
-        supabase.from("stores").select("id", { count: "exact", head: true }).eq("owner_id", user.id),
-        supabase.from("products").select("id", { count: "exact", head: true }),
-        supabase.from("subscriptions").select("plan,status").eq("user_id", user.id).maybeSingle(),
+      // 1. Get the store for the current user
+      const { data: store } = await supabase
+        .from("stores")
+        .select("id, name")
+        .eq("owner_id", user.id)
+        .maybeSingle();
+
+      // 2. Get credits and subscriptions
+      const [creditsRes, subRes] = await Promise.all([
+        store ? supabase.from("store_credits").select("balance").eq("store_id", store.id).maybeSingle() : Promise.resolve({ data: null }),
+        supabase.from("subscriptions").select("plan, status").eq("user_id", user.id).maybeSingle(),
       ]);
+
       return {
-        stores: stores.count ?? 0,
-        products: products.count ?? 0,
-        plan: sub.data?.plan ?? "basic",
-        status: sub.data?.status ?? "trialing",
+        credits: creditsRes.data?.balance ?? 0,
+        plan: subRes.data?.plan ?? "basic",
+        status: subRes.data?.status ?? "trialing",
+        store_name: store?.name ?? "Belum Diatur",
       };
     },
   });
@@ -33,10 +41,10 @@ function DashboardPage() {
   const greet = user.user_metadata?.full_name?.split(" ")[0] || "Pemilik UMKM";
 
   const cards = [
-    { icon: Store, label: "Toko", value: stats?.stores ?? "—", to: "/store", tone: "bg-primary/10 text-primary" },
-    { icon: Package, label: "Produk", value: stats?.products ?? "—", to: "/store", tone: "bg-amber-500/10 text-amber-600" },
-    { icon: CreditCard, label: "Paket", value: stats?.plan.toUpperCase() ?? "—", to: "/subscription", tone: "bg-emerald-500/10 text-emerald-600" },
-    { icon: TrendingUp, label: "Status", value: stats?.status === "active" ? "Aktif" : "Uji Coba", to: "/subscription", tone: "bg-sky-500/10 text-sky-600" },
+    { icon: Store, label: "Nama Toko", value: stats?.store_name ?? "—", to: "/store", tone: "bg-primary/10 text-primary" },
+    { icon: Package, label: "Sisa Kredit", value: stats?.credits ?? "—", to: "/subscription", tone: "bg-amber-500/10 text-amber-600" },
+    { icon: CreditCard, label: "Paket Langganan", value: stats?.plan ?? "—", to: "/subscription", tone: "bg-emerald-500/10 text-emerald-600" },
+    { icon: TrendingUp, label: "Status Langganan", value: stats?.status === "ACTIVE" ? "Aktif" : "Kedaluwarsa", to: "/subscription", tone: "bg-sky-500/10 text-sky-600" },
   ];
 
   return (
