@@ -34,3 +34,4 @@ dist-ssr
 .lovable
 .env
 supabase/*
+graphify-out/
