@@ -104,7 +104,7 @@ function LandingPage() {
             <h1 className="mt-5 text-[40px] leading-[1.05] sm:text-6xl lg:text-[72px] font-extrabold tracking-tight text-balance">
               Pesanan ramai tidak lagi berarti{" "}
               <span className="relative inline-block text-primary">
-                antrean berantakan 
+                antrean berantakan
                 <svg
                   className="absolute -bottom-2 left-0 w-full"
                   viewBox="0 0 200 8"
@@ -120,17 +120,16 @@ function LandingPage() {
                   />
                 </svg>
               </span>
-              .
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-ink-soft max-w-xl text-pretty">
               Sellora-AI membantu UMKM menerima pesanan, mengatur antrean, dan memberi notifikasi
-              otomatis langsung lewat WhatsApp.
+              otomatis langsung lewat WhatsApp
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="/auth">
                 <Button variant="hero" size="xl" className="rounded-full">
-                  🚀 Mulai Gratis <ArrowRight className="h-5 w-5" /> 
+                  🚀 Mulai Gratis <ArrowRight className="h-5 w-5" />
                 </Button>
               </a>
               <a href="#demo" aria-label="Lihat demo Sellora-AI">
@@ -202,10 +201,10 @@ function LandingPage() {
         <motion.div {...fadeUp} className="max-w-2xl">
           <EyebrowChip>Masalah</EyebrowChip>
           <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-balance">
-            Revenue bocor karena antrean manual.
+            Revenue bocor karena antrean manual
           </h2>
           <p className="mt-4 text-lg text-ink-soft">
-            Setiap menit pelanggan menunggu, peluang penjualan menghilang.
+            Setiap menit pelanggan menunggu, peluang penjualan menghilang
           </p>
         </motion.div>
 
@@ -250,7 +249,7 @@ function LandingPage() {
         <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto">
           <EyebrowChip>Before vs After</EyebrowChip>
           <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-balance">
-            Dari kacau jadi otomatis.
+            Dari kacau jadi otomatis
           </h2>
         </motion.div>
 
@@ -314,10 +313,10 @@ function LandingPage() {
         <motion.div {...fadeUp} className="max-w-2xl">
           <EyebrowChip>Solusi</EyebrowChip>
           <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-balance">
-            Satu WhatsApp untuk mengatur semua pesanan.
+            Satu WhatsApp untuk mengatur semua pesanan
           </h2>
           <p className="mt-4 text-lg text-ink-soft">
-            Tidak ada app baru, tidak ada training panjang. Langsung jalan di hari pertama.
+            Tidak ada app baru, tidak ada training panjang, Langsung jalan di hari pertama
           </p>
         </motion.div>
 
@@ -371,10 +370,10 @@ function LandingPage() {
         <motion.div {...fadeUp} className="text-center max-w-2xl mx-auto">
           <EyebrowChip>Demo Interaktif</EyebrowChip>
           <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-balance">
-            Lihat Sellora-AI bekerja dalam 30 detik.
+            Lihat Sellora-AI bekerja dalam 30 detik
           </h2>
           <p className="mt-4 text-lg text-ink-soft">
-            Dari customer scan QR sampai notifikasi pesanan siap diambil.
+            Dari customer scan QR sampai notifikasi pesanan siap diambil
           </p>
         </motion.div>
 
@@ -569,7 +568,7 @@ function LandingPage() {
               Live & ready
             </span>
             <h2 className="mt-6 text-4xl sm:text-6xl font-extrabold tracking-tight text-white text-balance">
-              Jangan kehilangan pelanggan karena antrean.
+              Jangan kehilangan pelanggan karena antrean
             </h2>
             <p className="mt-5 text-lg text-white/70 text-pretty">
               Mulai gunakan Sellora-AI hari ini dan rasakan bedanya di jam sibuk pertama.
@@ -599,7 +598,7 @@ function LandingPage() {
             <div className="flex items-center gap-2 font-extrabold">
               <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-foreground">
                 <MessageCircle className="h-4 w-4" strokeWidth={2.5} />
-              </span> 
+              </span>
               Sellora-AI
             </div>
             <p className="mt-3 text-sm text-ink-soft max-w-xs">
